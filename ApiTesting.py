@@ -32,7 +32,7 @@ class ApiTestingCase2(unittest.TestCase):
 
     BASE_URL = "https://petstore.swagger.io/v2/store/order/"
     ORDEN_FAIL = "70"
-    ORDEN_SUCCESS = "77"
+    ORDEN_SUCCESS = "70"
     
     def testGet1_Success(self):
         print('Prueba 2 - consumo API Get Success + Body \n')
