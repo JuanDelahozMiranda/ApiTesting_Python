@@ -18,7 +18,6 @@ class ApiTestingCase(unittest.TestCase):
     def testRequestPostSuccess(self):
         print('Prueba 1 - consumo API Post \n')
         lenBase = len(BASE_URL)-1
-
         response = requests.post(url=BASE_URL[0:lenBase], json=PARAMETER, headers={"Content-Type":"application/json"})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.headers['Content-Type'], 'application/json')
@@ -38,7 +37,6 @@ class ApiTestingCase2(unittest.TestCase):
         print('Prueba 2 - consumo API Get Success + Body \n')
         response = requests.get(BASE_URL+ORDEN_SUCCESS)
         response_body = response.json()
-
         self.assertEqual(response_body["id"], int(ORDEN_SUCCESS))
         self.assertEqual(response_body["petId"], int(ORDEN_SUCCESS))
         self.assertEqual(response_body["quantity"], 3)
@@ -50,7 +48,6 @@ class ApiTestingCase2(unittest.TestCase):
         print('Prueba 3 - consumo API GET Fail \n')
         response = requests.get(BASE_URL+ORDEN_FAIL)
         response_body = response.json()
-        
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response_body["code"], 1)
         self.assertEqual(response_body["type"], 'error')
@@ -69,7 +66,6 @@ class ApiTestingCase2(unittest.TestCase):
         print('Prueba 5 - consumo API Delete Fail + Body \n')
         response = requests.delete(BASE_URL+ORDEN_FAIL)
         response_body = response.json()
-
         self.assertEqual(response_body["code"], 404)
         self.assertEqual(response_body["type"], 'unknown')
         self.assertEqual(response_body["message"], 'Order Not Found')
